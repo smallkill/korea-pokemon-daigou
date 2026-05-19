@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>韓國寶可夢代購清單</title>
+<style>
+  :root{
+    --p-blue:#3c5aa6; --p-yellow:#ffcb05; --bg:#f6f7fb; --card:#fff;
+    --ink:#22252b; --muted:#6b7280; --line:#e5e7eb;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{
+    font-family:"Noto Sans TC","PingFang TC","Microsoft JhengHei",sans-serif;
+    background:var(--bg); color:var(--ink); line-height:1.6;
+    -webkit-text-size-adjust:100%;
+  }
+  header{
+    background:linear-gradient(135deg,var(--p-blue),#5a78c8);
+    color:#fff; padding:28px 20px 24px; text-align:center;
+  }
+  header h1{font-size:1.5rem; letter-spacing:.5px;}
+  header h1 .pill{
+    background:var(--p-yellow); color:var(--p-blue);
+    border-radius:999px; padding:2px 10px; font-size:.95rem; margin-left:6px;
+  }
+  header p{font-size:.9rem; opacity:.92; margin-top:8px;}
+  .wrap{max-width:720px; margin:0 auto; padding:18px 14px 48px;}
+  .note{
+    background:#fff8dc; border:1px solid #f0e3a0; border-radius:12px;
+    padding:12px 14px; font-size:.9rem; color:#7a6a1f; margin-bottom:18px;
+  }
+  .count{font-size:.85rem; color:var(--muted); margin:0 4px 12px;}
+  .item{
+    background:var(--card); border:1px solid var(--line); border-radius:16px;
+    overflow:hidden; margin-bottom:18px; box-shadow:0 1px 3px rgba(0,0,0,.05);
+  }
+  .item-photo{display:block; width:100%; background:#000;}
+  .item-photo img{display:block; width:100%; height:auto;}
+  .item-body{padding:14px 16px 16px;}
+  .item-no{
+    display:inline-block; background:var(--p-blue); color:#fff;
+    font-size:.8rem; font-weight:700; border-radius:6px; padding:2px 9px; margin-bottom:8px;
+  }
+  .item-name{font-size:1.08rem; font-weight:700; margin-bottom:10px;}
+  .item-name small{display:block; font-size:.82rem; font-weight:400; color:var(--muted); margin-top:2px;}
+  .rows{font-size:.92rem;}
+  .row{display:flex; gap:10px; padding:5px 0; border-top:1px dashed var(--line);}
+  .row:first-child{border-top:none;}
+  .row .k{flex:0 0 64px; color:var(--muted);}
+  .row .v{flex:1; font-weight:600;}
+  .qty{color:#c0392b;}
+  footer{text-align:center; font-size:.8rem; color:var(--muted); padding:10px 20px 30px;}
+</style>
+</head>
+<body>
+
+<header>
+  <h1>🛍️ 韓國寶可夢代購清單<span class="pill">給朋友</span></h1>
+  <p>寶可夢 30 週年 · 首爾｜麻煩你幫我代購下列商品 🙏</p>
+</header>
+
+<div class="wrap">
+
+  <div class="note">
+    📌 使用說明:每一項都有照片、品名、要買的數量與備註。<br>
+    金額為「參考價」(以現場標示為準)。有任何品項缺貨或不確定,再傳訊息問我即可,謝謝你!💛
+  </div>
+
+  <p class="count">目前清單共 <strong>1</strong> 項</p>
+
+  <!-- ===== 商品項目開始(之後新增品項複製一個 .item 區塊即可) ===== -->
+
+  <article class="item">
+    <a class="item-photo" href="images/item01.jpg" target="_blank" rel="noopener">
+      <img src="images/item01.jpg" alt="寶可夢髮夾扭蛋">
+    </a>
+    <div class="item-body">
+      <span class="item-no">#1</span>
+      <div class="item-name">
+        寶可夢 髮夾扭蛋
+        <small>POKEMON HAIRPIN COLLECTION（轉蛋／가챠）</small>
+      </div>
+      <div class="rows">
+        <div class="row"><div class="k">數量</div><div class="v qty">抽 2 顆扭蛋</div></div>
+        <div class="row"><div class="k">參考價</div><div class="v">₩10,000 / 顆（機台標示）</div></div>
+        <div class="row"><div class="k">地點</div><div class="v">首爾 寶可夢快閃店扭蛋區（影片截圖,機台標示「扭蛋都有貨」）</div></div>
+        <div class="row"><div class="k">備註</div><div class="v">隨機款,抽 2 顆就好,抽到什麼都可以 😄</div></div>
+      </div>
+    </div>
+  </article>
+
+  <!-- ===== 商品項目結束 ===== -->
+
+</div>
+
+<footer>
+  韓國寶可夢代購清單 · 最後更新 2026/05/20
+</footer>
+
+</body>
+</html>
