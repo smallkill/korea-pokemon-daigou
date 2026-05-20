@@ -28,47 +28,37 @@
   }
   header .sub{font-size:.72rem; opacity:.9; margin-top:3px;}
   .wrap{max-width:680px; margin:0 auto; padding:10px 10px 28px;}
-  .note{
-    background:#fff8dc; border:1px solid #f0e3a0; border-radius:10px;
-    padding:9px 11px; font-size:.78rem; color:#7a6a1f; margin-bottom:10px; line-height:1.5;
-  }
   .summary{
     background:#eef3ff; border:1px solid #c6d4f5; border-radius:10px;
-    padding:9px 11px; font-size:.78rem; color:#234; margin-bottom:10px;
+    padding:9px 11px; font-size:.78rem; color:#234; margin-bottom:10px; line-height:1.5;
   }
   .summary b{color:var(--p-blue);}
+  .summary small{color:var(--muted);}
   .item{
     display:flex; gap:10px;
     background:var(--card); border:1px solid var(--line); border-radius:12px;
-    padding:9px; margin-bottom:9px; box-shadow:0 1px 2px rgba(0,0,0,.04);
+    padding:10px; margin-bottom:10px; box-shadow:0 1px 2px rgba(0,0,0,.04);
   }
   .item-photo{
-    flex:0 0 100px; width:100px; height:100px; border-radius:8px; overflow:hidden;
+    flex:none; width:48%; aspect-ratio:1; border-radius:10px; overflow:hidden;
     display:block; background:#000;
   }
   .item-photo img{width:100%; height:100%; object-fit:cover; display:block;}
-  .item-body{flex:1; min-width:0; display:flex; flex-direction:column;}
-  .item-head{display:flex; align-items:center; gap:6px; margin-bottom:3px; flex-wrap:wrap;}
+  .item-body{flex:1; min-width:0; display:flex; flex-direction:column; gap:8px;}
+  .item-head{display:flex; align-items:center; gap:6px; flex-wrap:wrap;}
   .item-no{
     display:inline-block; background:var(--p-blue); color:#fff;
-    font-size:.68rem; font-weight:700; border-radius:5px; padding:1px 7px;
+    font-size:.72rem; font-weight:700; border-radius:5px; padding:2px 8px;
   }
   .qty-badge{
     display:inline-block; background:var(--accent); color:#fff;
-    font-size:.74rem; font-weight:700; border-radius:5px; padding:2px 8px;
+    font-size:.85rem; font-weight:700; border-radius:6px; padding:3px 10px;
     margin-left:auto;
   }
-  .item-name{font-size:.92rem; font-weight:700; line-height:1.3;}
-  .item-name small{display:block; font-size:.7rem; font-weight:400; color:var(--muted); margin-top:1px; line-height:1.35;}
-  .meta{font-size:.74rem; color:var(--muted); margin-top:5px; line-height:1.5;}
-  .meta b{color:var(--ink); font-weight:600;}
-  .remarks{font-size:.72rem; color:#8a6a1f; margin-top:3px; line-height:1.45;}
+  .action{font-size:.95rem; line-height:1.55; color:var(--ink); font-weight:500;}
+  .action b{color:var(--p-blue); font-weight:700;}
+  .action .star{color:#d4a000;}
   footer{text-align:center; font-size:.72rem; color:var(--muted); padding:8px 20px 24px;}
-  @media(min-width:520px){
-    .item-photo{flex:0 0 130px; width:130px; height:130px;}
-    .item-name{font-size:1rem;}
-    .meta,.remarks{font-size:.8rem;}
-  }
   /* Lightbox */
   .lb{
     position:fixed; inset:0; background:rgba(0,0,0,.92);
@@ -101,148 +91,74 @@
 
 <div class="wrap">
 
-  <div class="note">
-    📌 每張縮圖點下去可看大圖。價格欄寫「未知」者請以現場機台/標示為準。<br>
-    有任何缺貨或不確定的,傳訊息問我即可,謝謝你 💛
-  </div>
-
   <div class="summary">
-    💰 <b>目前已知小計</b>:約 ₩56,000(≈ NT$1,193)+ 第 3、4、5、6 項待確認<br>
-    <small style="color:var(--muted)">髮夾 ₩10,000×2 + 鯉魚王扭蛋 ₩12,000×3</small>
+    💰 <b>已知小計</b>:約 ₩56,000(≈ NT$1,193)+ 部分以現場標示為準<br>
+    <small>髮夾 ₩10,000×2 + 鯉魚王扭蛋 ₩12,000×3</small>
   </div>
 
   <!-- ===== 商品項目開始 ===== -->
 
   <article class="item">
-    <a class="item-photo" href="images/item01.jpg" target="_blank" rel="noopener">
-      <img src="images/item01.jpg" alt="寶可夢髮夾扭蛋">
-    </a>
+    <a class="item-photo" href="images/item01.jpg"><img src="images/item01.jpg" alt="寶可夢髮夾"></a>
     <div class="item-body">
-      <div class="item-head">
-        <span class="item-no">#1</span>
-        <span class="qty-badge">2 個</span>
+      <div class="item-head"><span class="item-no">#1</span><span class="qty-badge">2 個</span></div>
+      <div class="action">
+        可指定 → 買 <b>皮卡丘 + 雷丘</b><br>
+        不能選 → <b>抽 2 顆</b>
       </div>
-      <div class="item-name">
-        寶可夢 髮夾「All Together, Zap Zap!」
-        <small>헤어핀 컬렉션(電氣寶可夢髮夾系列)</small>
-      </div>
-      <div class="meta">
-        💰 <b>₩10,000 / 顆</b>(約 NT$213,共 ≈ NT$426)<br>
-        📍 通路:寶可夢中心可直接買 / 部分地點也有扭蛋機<br>
-        ⚠️ 官方標示「랜덤 상품(隨機商品)」與「1인당 구매 가능 개수 제한(每人限購)」
-      </div>
-      <div class="remarks">⭐ 兩種情況選一邊買:<br>① <b>扭蛋區</b> → 抽 <b>2 顆</b>(隨機)<br>② <b>寶可夢中心</b>(若可以指定款) → 買 <b>皮卡丘 + 雷丘</b> 共 2 個</div>
     </div>
   </article>
 
   <article class="item">
-    <a class="item-photo" href="images/item02.jpg" target="_blank" rel="noopener">
-      <img src="images/item02.jpg" alt="鯉魚王招福鑰匙圈扭蛋">
-    </a>
+    <a class="item-photo" href="images/item02.jpg"><img src="images/item02.jpg" alt="鯉魚王招福鑰匙圈"></a>
     <div class="item-body">
-      <div class="item-head">
-        <span class="item-no">#2</span>
-        <span class="qty-badge">扭 3 顆</span>
+      <div class="item-head"><span class="item-no">#2</span><span class="qty-badge">扭 3 顆</span></div>
+      <div class="action">
+        <b>扭 3 顆</b>(全 3 種隨機)<br>
+        <span class="star">⭐</span> 提前扭到 <b>金色(色違)</b> 就停手
       </div>
-      <div class="item-name">
-        鯉魚王 招福鑰匙圈(扭蛋)
-        <small>액막이 키링／행운가득 잉어킹(Magikarp 避邪招福吊飾·全 3 種隨機·附迷你鈴鐺)</small>
-      </div>
-      <div class="meta">
-        💰 <b>₩12,000 / 顆</b>(約 NT$256;來自影片字幕標示)<br>
-        📍 首爾 寶可夢秘密森林 Pokémon Secret Forest<br>
-        📅 官方宣傳圖標示 2026/5/11 開賣
-      </div>
-      <div class="remarks">全 3 種:雄性(紅)/雌性(白)/<b>色違(金色)</b>,各附小鈴鐺。最多扭 3 顆;<b>若提前扭到金色(色違)就可以停手</b> ⭐</div>
     </div>
   </article>
 
   <article class="item">
-    <a class="item-photo" href="images/item03.jpg" target="_blank" rel="noopener">
-      <img src="images/item03.jpg" alt="雙皮卡丘玩偶">
-    </a>
+    <a class="item-photo" href="images/item03.jpg"><img src="images/item03.jpg" alt="軟綿綿百變怪的一天 玩偶"></a>
     <div class="item-body">
-      <div class="item-head">
-        <span class="item-no">#3</span>
-        <span class="qty-badge">1 份</span>
+      <div class="item-head"><span class="item-no">#3</span><span class="qty-badge">1 份</span></div>
+      <div class="action">
+        <b>1 份就好</b>(就照片這套)
       </div>
-      <div class="item-name">
-        말랑말랑 메타몽의 하루 玩偶
-        <small>「軟綿綿百變怪的一天」毛絨玩偶 · metamong PLAYGROUND</small>
-      </div>
-      <div class="meta">
-        💰 <b>未知</b>,請以現場標示為準<br>
-        📍 首爾 metamong PLAYGROUND(메타몽 놀이터,聖水洞)<br>
-        📅 官方宣傳圖標示 2026/5/9 開賣
-      </div>
-      <div class="remarks">⚠️ 官方標註「1인당 구매 제한 1개」(每人限購 1 個)。照片左邊那隻是「百變怪變身的皮卡丘」、右邊是原版皮卡丘 —— 主題即「百變怪變身中」</div>
     </div>
   </article>
 
   <article class="item">
-    <a class="item-photo" href="images/item04.jpg" target="_blank" rel="noopener">
-      <img src="images/item04.jpg" alt="軟綿綿百變怪的一天 隨機毛絨玩偶">
-    </a>
+    <a class="item-photo" href="images/item04.jpg"><img src="images/item04.jpg" alt="隨機百變怪玩偶"></a>
     <div class="item-body">
-      <div class="item-head">
-        <span class="item-no">#4</span>
-        <span class="qty-badge">抽 3 個</span>
+      <div class="item-head"><span class="item-no">#4</span><span class="qty-badge">抽 3 個</span></div>
+      <div class="action">
+        <b>抽 3 個</b>(9 款隨機,可能重複)
       </div>
-      <div class="item-name">
-        軟綿綿百變怪的一天 隨機玩偶
-        <small>말랑말랑 메타몽의 하루 랜덤 봉제인형 컬렉션(共 9 款百變怪表情款,隨機抽)</small>
-      </div>
-      <div class="meta">
-        💰 <b>未知</b>,請以現場標示為準<br>
-        📍 首爾 metamong PLAYGROUND(메타몽 놀이터,聖水洞)<br>
-        📅 官方宣傳圖標示 2026/5/9 開賣
-      </div>
-      <div class="remarks">⚠️ 1인당 구매 제한 9개(每人最多買 9 個)。官方明示「隨機商品,可能拿到重複款;買滿 9 個也不保證集齊所有 9 款」 → 抽 3 個有機會重複,正常</div>
     </div>
   </article>
 
   <article class="item">
-    <a class="item-photo" href="images/item05.jpg" target="_blank" rel="noopener">
-      <img src="images/item05.jpg" alt="皮卡丘 × 百變怪 鑰匙圈玩偶 — 已勾選 3 款">
-    </a>
+    <a class="item-photo" href="images/item05.jpg"><img src="images/item05.jpg" alt="皮卡丘×百變怪鑰匙圈 — 已勾選3款"></a>
     <div class="item-body">
-      <div class="item-head">
-        <span class="item-no">#5</span>
-        <span class="qty-badge">3 個</span>
+      <div class="item-head"><span class="item-no">#5</span><span class="qty-badge">3 個</span></div>
+      <div class="action">
+        可指定 → 買照片 <b>✓ 勾選的 3 款</b><br>
+        不能選 → <b>抽 3 個</b>
       </div>
-      <div class="item-name">
-        皮卡丘 × 百變怪 鑰匙圈玩偶
-        <small>피카츄 × 메타몽 키체인 마스코트(寶可夢中心商品)</small>
-      </div>
-      <div class="meta">
-        💰 <b>未知</b>,請以現場標示為準<br>
-        📍 待確認(可能同 metamong PLAYGROUND 場域,請朋友現場找)<br>
-        ⚠️ 官方標示「1인당 구매 제한 1개」(每人限購 1 個,可能是每款各 1 或總共 1,請現場確認)
-      </div>
-      <div class="remarks">⭐ 兩種情況選一邊買:<br>① <b>可以指定款</b> → 買「照片上已勾選 ✓ 的 3 款」(2 隻百變怪 + 1 隻皮卡丘姿勢)<br>② <b>只能隨機</b> → 抽 3 個</div>
     </div>
   </article>
 
   <article class="item">
-    <a class="item-photo" href="images/item06.jpg" target="_blank" rel="noopener">
-      <img src="images/item06.jpg" alt="變身!百變怪 玩偶 — 已圈選 3 款">
-    </a>
+    <a class="item-photo" href="images/item06.jpg"><img src="images/item06.jpg" alt="變身百變怪玩偶 — 已圈出3款"></a>
     <div class="item-body">
-      <div class="item-head">
-        <span class="item-no">#6</span>
-        <span class="qty-badge">指定 3 款</span>
+      <div class="item-head"><span class="item-no">#6</span><span class="qty-badge">3 款</span></div>
+      <div class="action">
+        可指定 → 買照片 <b>紅圈的 3 款</b><br>
+        不能選 → <b>抽 3 個</b>
       </div>
-      <div class="item-name">
-        變身!百變怪 玩偶
-        <small>포켓몬센터 봉제인형 변신! 메타몽(百變怪變身成其他寶可夢的玩偶系列)</small>
-      </div>
-      <div class="meta">
-        💰 <b>未知</b>,請以現場標示為準<br>
-        📍 首爾 metamong PLAYGROUND(메타몽 놀이터,聖水洞)<br>
-        📅 官方宣傳圖標示 2026/5/11 開賣<br>
-        ⚠️ 官方標示「1인당 구매 제한 1개」(每人限購 1 個,可能是每款各 1 或總共 1,請現場確認)
-      </div>
-      <div class="remarks">⭐ 想要 3 款<b>百變怪變身造型</b>,照片紅圈標示(由 Gemini 標註):<br>① 燭光靈(蠟燭)造型 — 頂排<br>② 破破袋(破布袋)造型 — 頂排最右<br>③ 謎擬Q 造型 — 中排最右</div>
     </div>
   </article>
 
@@ -278,7 +194,7 @@
   document.querySelectorAll('.item-photo').forEach(function(a){
     a.removeAttribute('target');
     a.addEventListener('click', function(e){
-      if (e.metaKey || e.ctrlKey || e.shiftKey || e.button === 1) return; // 修飾鍵/中鍵保留新分頁原生行為
+      if (e.metaKey || e.ctrlKey || e.shiftKey || e.button === 1) return;
       e.preventDefault();
       var im = a.querySelector('img');
       open(a.getAttribute('href'), im ? im.alt : '');
