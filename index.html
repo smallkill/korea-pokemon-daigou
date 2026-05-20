@@ -7,86 +7,109 @@
 <style>
   :root{
     --p-blue:#3c5aa6; --p-yellow:#ffcb05; --bg:#f6f7fb; --card:#fff;
-    --ink:#22252b; --muted:#6b7280; --line:#e5e7eb;
+    --ink:#22252b; --muted:#6b7280; --line:#e5e7eb; --accent:#c0392b;
   }
   *{box-sizing:border-box;margin:0;padding:0;}
   body{
     font-family:"Noto Sans TC","PingFang TC","Microsoft JhengHei",sans-serif;
-    background:var(--bg); color:var(--ink); line-height:1.6;
+    background:var(--bg); color:var(--ink); line-height:1.5;
     -webkit-text-size-adjust:100%;
   }
   header{
     background:linear-gradient(135deg,var(--p-blue),#5a78c8);
-    color:#fff; padding:28px 20px 24px; text-align:center;
+    color:#fff; padding:14px 16px 12px; text-align:center;
+    position:sticky; top:0; z-index:10;
+    box-shadow:0 1px 6px rgba(0,0,0,.12);
   }
-  header h1{font-size:1.5rem; letter-spacing:.5px;}
+  header h1{font-size:1.05rem; letter-spacing:.3px; font-weight:700;}
   header h1 .pill{
     background:var(--p-yellow); color:var(--p-blue);
-    border-radius:999px; padding:2px 10px; font-size:.95rem; margin-left:6px;
+    border-radius:999px; padding:1px 8px; font-size:.72rem; margin-left:6px; vertical-align:middle;
   }
-  header p{font-size:.9rem; opacity:.92; margin-top:8px;}
-  .wrap{max-width:720px; margin:0 auto; padding:18px 14px 48px;}
+  header .sub{font-size:.72rem; opacity:.9; margin-top:3px;}
+  .wrap{max-width:680px; margin:0 auto; padding:10px 10px 28px;}
   .note{
-    background:#fff8dc; border:1px solid #f0e3a0; border-radius:12px;
-    padding:12px 14px; font-size:.9rem; color:#7a6a1f; margin-bottom:18px;
+    background:#fff8dc; border:1px solid #f0e3a0; border-radius:10px;
+    padding:9px 11px; font-size:.78rem; color:#7a6a1f; margin-bottom:10px; line-height:1.5;
   }
-  .count{font-size:.85rem; color:var(--muted); margin:0 4px 12px;}
+  .summary{
+    background:#eef3ff; border:1px solid #c6d4f5; border-radius:10px;
+    padding:9px 11px; font-size:.78rem; color:#234; margin-bottom:10px;
+  }
+  .summary b{color:var(--p-blue);}
   .item{
-    background:var(--card); border:1px solid var(--line); border-radius:16px;
-    overflow:hidden; margin-bottom:18px; box-shadow:0 1px 3px rgba(0,0,0,.05);
+    display:flex; gap:10px;
+    background:var(--card); border:1px solid var(--line); border-radius:12px;
+    padding:9px; margin-bottom:9px; box-shadow:0 1px 2px rgba(0,0,0,.04);
   }
-  .item-photo{display:block; width:100%; background:#000;}
-  .item-photo img{display:block; width:100%; height:auto;}
-  .item-body{padding:14px 16px 16px;}
+  .item-photo{
+    flex:0 0 100px; width:100px; height:100px; border-radius:8px; overflow:hidden;
+    display:block; background:#000;
+  }
+  .item-photo img{width:100%; height:100%; object-fit:cover; display:block;}
+  .item-body{flex:1; min-width:0; display:flex; flex-direction:column;}
+  .item-head{display:flex; align-items:center; gap:6px; margin-bottom:3px; flex-wrap:wrap;}
   .item-no{
     display:inline-block; background:var(--p-blue); color:#fff;
-    font-size:.8rem; font-weight:700; border-radius:6px; padding:2px 9px; margin-bottom:8px;
+    font-size:.68rem; font-weight:700; border-radius:5px; padding:1px 7px;
   }
-  .item-name{font-size:1.08rem; font-weight:700; margin-bottom:10px;}
-  .item-name small{display:block; font-size:.82rem; font-weight:400; color:var(--muted); margin-top:2px;}
-  .rows{font-size:.92rem;}
-  .row{display:flex; gap:10px; padding:5px 0; border-top:1px dashed var(--line);}
-  .row:first-child{border-top:none;}
-  .row .k{flex:0 0 64px; color:var(--muted);}
-  .row .v{flex:1; font-weight:600;}
-  .qty{color:#c0392b;}
-  footer{text-align:center; font-size:.8rem; color:var(--muted); padding:10px 20px 30px;}
+  .qty-badge{
+    display:inline-block; background:var(--accent); color:#fff;
+    font-size:.74rem; font-weight:700; border-radius:5px; padding:2px 8px;
+    margin-left:auto;
+  }
+  .item-name{font-size:.92rem; font-weight:700; line-height:1.3;}
+  .item-name small{display:block; font-size:.7rem; font-weight:400; color:var(--muted); margin-top:1px; line-height:1.35;}
+  .meta{font-size:.74rem; color:var(--muted); margin-top:5px; line-height:1.5;}
+  .meta b{color:var(--ink); font-weight:600;}
+  .remarks{font-size:.72rem; color:#8a6a1f; margin-top:3px; line-height:1.45;}
+  footer{text-align:center; font-size:.72rem; color:var(--muted); padding:8px 20px 24px;}
+  @media(min-width:520px){
+    .item-photo{flex:0 0 130px; width:130px; height:130px;}
+    .item-name{font-size:1rem;}
+    .meta,.remarks{font-size:.8rem;}
+  }
 </style>
 </head>
 <body>
 
 <header>
   <h1>🛍️ 韓國寶可夢代購清單<span class="pill">給朋友</span></h1>
-  <p>寶可夢 30 週年 · 首爾｜麻煩你幫我代購下列商品 🙏</p>
+  <div class="sub">寶可夢 30 週年 · 首爾｜共 <strong id="cnt">3</strong> 項</div>
 </header>
 
 <div class="wrap">
 
   <div class="note">
-    📌 使用說明:每一項都有照片、品名、要買的數量與備註。<br>
-    金額為「參考價」(以現場標示為準)。有任何品項缺貨或不確定,再傳訊息問我即可,謝謝你!💛
+    📌 每張縮圖點下去可看大圖。價格欄寫「未知」者請以現場機台/標示為準。<br>
+    有任何缺貨或不確定的,傳訊息問我即可,謝謝你 💛
   </div>
 
-  <p class="count">目前清單共 <strong>3</strong> 項</p>
+  <div class="summary">
+    💰 <b>目前已知小計</b>:約 ₩56,000(≈ NT$1,192)+ 第 3 項待確認<br>
+    <small style="color:var(--muted)">扭蛋部分 = ₩10,000×2 + ₩12,000×3</small>
+  </div>
 
-  <!-- ===== 商品項目開始(之後新增品項複製一個 .item 區塊即可) ===== -->
+  <!-- ===== 商品項目開始 ===== -->
 
   <article class="item">
     <a class="item-photo" href="images/item01.jpg" target="_blank" rel="noopener">
       <img src="images/item01.jpg" alt="寶可夢髮夾扭蛋">
     </a>
     <div class="item-body">
-      <span class="item-no">#1</span>
+      <div class="item-head">
+        <span class="item-no">#1</span>
+        <span class="qty-badge">抽 2 顆</span>
+      </div>
       <div class="item-name">
         寶可夢 髮夾扭蛋
-        <small>POKEMON HAIRPIN COLLECTION（轉蛋／가챠）</small>
+        <small>POKEMON HAIRPIN COLLECTION（扭蛋／가챠）</small>
       </div>
-      <div class="rows">
-        <div class="row"><div class="k">數量</div><div class="v qty">抽 2 顆扭蛋</div></div>
-        <div class="row"><div class="k">價格</div><div class="v">₩10,000 / 顆（約 NT$213,匯率浮動）</div></div>
-        <div class="row"><div class="k">地點</div><div class="v">首爾 寶可夢快閃店扭蛋區（來源:社群影片截圖）</div></div>
-        <div class="row"><div class="k">備註</div><div class="v">隨機款,抽 2 顆就好,抽到什麼都可以 😄</div></div>
+      <div class="meta">
+        💰 <b>₩10,000 / 顆</b>(約 NT$213)<br>
+        📍 首爾 寶可夢快閃店扭蛋區
       </div>
+      <div class="remarks">隨機款,抽 2 顆,抽到什麼都行 😄</div>
     </div>
   </article>
 
@@ -95,17 +118,19 @@
       <img src="images/item02.jpg" alt="鯉魚王招福鑰匙圈扭蛋">
     </a>
     <div class="item-body">
-      <span class="item-no">#2</span>
+      <div class="item-head">
+        <span class="item-no">#2</span>
+        <span class="qty-badge">扭 3 顆</span>
+      </div>
       <div class="item-name">
         鯉魚王 招福鑰匙圈
-        <small>액막이 키링／행운가득 잉어킹（Magikarp 避邪招福吊飾,附迷你鈴鐺）</small>
+        <small>액막이 키링／행운가득 잉어킹（Magikarp 避邪招福吊飾,附迷你鈴鐺)</small>
       </div>
-      <div class="rows">
-        <div class="row"><div class="k">數量</div><div class="v qty">扭 3 顆扭蛋</div></div>
-        <div class="row"><div class="k">價格</div><div class="v">₩12,000 / 顆（約 NT$256;影片字幕標示「鯉魚王最貴 ₩12,000」,該系列每款價錢不同)</div></div>
-        <div class="row"><div class="k">地點</div><div class="v">首爾 寶可夢秘密森林 Pokémon Secret Forest（影片所述）</div></div>
-        <div class="row"><div class="k">備註</div><div class="v">鯉魚王款,附小鈴鐺;影片說「比較值得扭」</div></div>
+      <div class="meta">
+        💰 <b>₩12,000 / 顆</b>(約 NT$256;影片字幕標示,該系列各款價錢不同)<br>
+        📍 首爾 寶可夢秘密森林 Pokémon Secret Forest
       </div>
+      <div class="remarks">鯉魚王款,附小鈴鐺;影片說「比較值得扭」</div>
     </div>
   </article>
 
@@ -114,17 +139,19 @@
       <img src="images/item03.jpg" alt="雙皮卡丘玩偶">
     </a>
     <div class="item-body">
-      <span class="item-no">#3</span>
+      <div class="item-head">
+        <span class="item-no">#3</span>
+        <span class="qty-badge">1 份</span>
+      </div>
       <div class="item-name">
         雙皮卡丘玩偶
-        <small>兩隻黏在一起的皮卡丘玩偶（metamong Playground）</small>
+        <small>兩隻黏在一起的皮卡丘（metamong Playground)</small>
       </div>
-      <div class="rows">
-        <div class="row"><div class="k">數量</div><div class="v qty">1 份</div></div>
-        <div class="row"><div class="k">價格</div><div class="v">未知,請以現場標示為準</div></div>
-        <div class="row"><div class="k">地點</div><div class="v">首爾 metamong PLAYGROUND（메타몽 놀이터 / Ditto Playground,聖水洞）</div></div>
-        <div class="row"><div class="k">備註</div><div class="v">兩隻皮卡丘相依造型,如照片所示</div></div>
+      <div class="meta">
+        💰 <b>未知</b>,請以現場標示為準<br>
+        📍 首爾 metamong PLAYGROUND(메타몽 놀이터,聖水洞)
       </div>
+      <div class="remarks">兩隻皮卡丘相依造型,如照片所示</div>
     </div>
   </article>
 
