@@ -69,6 +69,27 @@
     .item-name{font-size:1rem;}
     .meta,.remarks{font-size:.8rem;}
   }
+  /* Lightbox */
+  .lb{
+    position:fixed; inset:0; background:rgba(0,0,0,.92);
+    z-index:1000; display:flex; align-items:center; justify-content:center;
+    padding:30px 14px; touch-action:manipulation;
+  }
+  .lb[hidden]{display:none;}
+  .lb-img{max-width:100%; max-height:100%; object-fit:contain; box-shadow:0 6px 30px rgba(0,0,0,.6); border-radius:6px;}
+  .lb-close{
+    position:absolute; top:14px; right:14px;
+    width:44px; height:44px; border-radius:50%; border:none;
+    background:#fff; color:#000; font-size:1.4rem; font-weight:700; cursor:pointer;
+    display:flex; align-items:center; justify-content:center; line-height:1;
+    box-shadow:0 3px 12px rgba(0,0,0,.45);
+  }
+  .lb-hint{
+    position:absolute; bottom:14px; left:50%; transform:translateX(-50%);
+    background:rgba(255,255,255,.12); color:#fff; font-size:.72rem;
+    padding:5px 12px; border-radius:999px; backdrop-filter:blur(4px);
+    pointer-events:none;
+  }
 </style>
 </head>
 <body>
@@ -145,14 +166,15 @@
         <span class="qty-badge">1 份</span>
       </div>
       <div class="item-name">
-        雙皮卡丘玩偶
-        <small>兩隻黏在一起的皮卡丘（metamong Playground)</small>
+        말랑말랑 메타몽의 하루 玩偶
+        <small>「軟綿綿百變怪的一天」毛絨玩偶 · metamong PLAYGROUND</small>
       </div>
       <div class="meta">
         💰 <b>未知</b>,請以現場標示為準<br>
-        📍 首爾 metamong PLAYGROUND(메타몽 놀이터,聖水洞)
+        📍 首爾 metamong PLAYGROUND(메타몽 놀이터,聖水洞)<br>
+        📅 官方宣傳圖標示 2026/5/9 開賣
       </div>
-      <div class="remarks">兩隻皮卡丘相依造型,如照片所示</div>
+      <div class="remarks">⚠️ 官方標註「1인당 구매 제한 1개」(每人限購 1 個)。照片左邊那隻是「百變怪變身的皮卡丘」、右邊是原版皮卡丘 —— 主題即「百變怪變身中」</div>
     </div>
   </article>
 
@@ -163,6 +185,45 @@
 <footer>
   韓國寶可夢代購清單 · 最後更新 2026/05/20
 </footer>
+
+<div id="lb" class="lb" hidden role="dialog" aria-modal="true" aria-label="圖片放大">
+  <img class="lb-img" alt="">
+  <button class="lb-close" type="button" aria-label="關閉">✕</button>
+  <span class="lb-hint">點 ✕ / 點背景 / 按 ESC 都可關閉</span>
+</div>
+
+<script>
+(function(){
+  var lb = document.getElementById('lb');
+  var img = lb.querySelector('.lb-img');
+  var btn = lb.querySelector('.lb-close');
+  function open(src, alt){
+    img.src = src; img.alt = alt || '';
+    lb.hidden = false;
+    document.body.style.overflow = 'hidden';
+  }
+  function close(){
+    lb.hidden = true;
+    img.src = '';
+    document.body.style.overflow = '';
+  }
+  document.querySelectorAll('.item-photo').forEach(function(a){
+    a.removeAttribute('target');
+    a.addEventListener('click', function(e){
+      if (e.metaKey || e.ctrlKey || e.shiftKey || e.button === 1) return; // 修飾鍵/中鍵保留新分頁原生行為
+      e.preventDefault();
+      var im = a.querySelector('img');
+      open(a.getAttribute('href'), im ? im.alt : '');
+    });
+  });
+  lb.addEventListener('click', function(e){
+    if (e.target === lb || e.target === btn) close();
+  });
+  document.addEventListener('keydown', function(e){
+    if (e.key === 'Escape' && !lb.hidden) close();
+  });
+})();
+</script>
 
 </body>
 </html>
